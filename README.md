@@ -1,4 +1,4 @@
 mylists
 =======
 
-My lists of things, links to check, to read, to watch, to remember.
+A web app to colect links, things to read, to check later, to do. Will eventually receive data from email.
