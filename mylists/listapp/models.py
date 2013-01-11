@@ -5,6 +5,7 @@ from django.db import models
 
 class Category(models.Model):
     name = models.CharField(max_length=63)
+    tag = models.SlugField(unique=True)
 
     def __unicode__(self):
         return unicode(self.name)
