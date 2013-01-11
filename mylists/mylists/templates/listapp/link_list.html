@@ -5,17 +5,18 @@
     {% for link in object_list %}
     <li>{{ link.title }}</li>
     <ul>
-        <li>{{ link.url }}</li>
+        <li><a href="{{ link.url }}">Link</a></li>
         {% if link.comment %}
             <li>{{ link.comment }}</li>
         {% endif %}
-        <li><a href="{{ link.date_added }}">Link</a></li>
-        <p>Categories</p>
-        <ul>
+        <li>{{ link.date_added }}</li>
+        <p>Categories:
             {% for cat in link.category.all %}
-            <li>{{ cat }}</li>
+            {{ cat }}{% if not forloop.last %},{% endif %}
+            {% empty %}
+            None
             {% endfor %}
-        </ul>
+        </p>
     </ul>
     {% endfor %}
 </ul>
