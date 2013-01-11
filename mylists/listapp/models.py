@@ -12,7 +12,7 @@ class Category(models.Model):
 
 class Link(models.Model):
     title = models.CharField(max_length=255)
-    url = models.SlugField(max_length=2000)
+    url = models.CharField(max_length=2000)
     comment = models.CharField(max_length=2000,
                                default='',
                                blank=True,
