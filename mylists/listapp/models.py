@@ -18,7 +18,7 @@ class Link(models.Model):
                                blank=True,
                                null=True)
     date_added = models.DateTimeField(default=datetime.now)
-    category = models.ManyToManyField(Category)
+    category = models.ManyToManyField(Category, blank=True)
 
     def __unicode__(self):
         return unicode(self.title)
