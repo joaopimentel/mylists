@@ -12,7 +12,7 @@
         <li>{{ link.date_added }}</li>
         <p>Categories:
             {% for cat in link.category.all %}
-            <a href="/tag/{{ cat.tag }}">{{cat}}</a>{% if not forloop.last %},{% endif %}
+            <a href="/tag/{{ cat.tag }}/">{{cat}}</a>{% if not forloop.last %},{% endif %}
             {% empty %}
             None
             {% endfor %}
