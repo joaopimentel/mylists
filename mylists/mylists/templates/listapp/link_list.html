@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<ul>
+    {% for link in object_list %}
+    <li>{{ link.title }}</li>
+    <ul>
+        <li>{{ link.url }}</li>
+        {% if link.comment %}
+            <li>{{ link.comment }}</li>
+        {% endif %}
+        <li><a href="{{ link.date_added }}">Link</a></li>
+        <p>Categories</p>
+        <ul>
+            {% for cat in link.category.all %}
+            <li>{{ cat }}</li>
+            {% endfor %}
+        </ul>
+    </ul>
+    {% endfor %}
+</ul>
+{% endblock %}
