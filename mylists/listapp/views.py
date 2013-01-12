@@ -7,6 +7,10 @@ from listapp.models import Link
 class LinkList(ListView):
     model = Link
 
+    def get_queryset(self):
+        """Order Links by date_added, desc."""
+        return self.model.objects.order_by('-date_added')
+
 
 def category_detail(request, tag=None):
     """Lists all Links tagged with given category.
