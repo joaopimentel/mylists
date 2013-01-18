@@ -1,17 +1,16 @@
+{% extends 'base.html' %}
+
 {% load url from future %}
-<html>
-    <head>
 
-    </head>
-    <body>
-        <h1>Login</h1>
+{% block title %}Lists Login{% endblock %}
 
-        <form method="post" action="{% url 'django.contrib.auth.views.login' %}">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <input type="submit" value="Login" />
-            <input type="hidden" name="next" value="{% firstof next '/' %}" />
-        </form>
+{% block body %}
+<h1>Login</h1>
 
-    </body>
-</html>
+<form method="post" action="{% url 'django.contrib.auth.views.login' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Login" />
+    <input type="hidden" name="next" value="{% firstof next '/' %}" />
+</form>
+{% endblock %}
