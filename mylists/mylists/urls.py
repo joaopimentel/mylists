@@ -11,6 +11,8 @@ urlpatterns = patterns('',
 
     url(r'^admin/', include(admin.site.urls)),
 
+    url(r'^accounts/login/', 'django.contrib.auth.views.login'),
+
     url(r'^$', LinkList.as_view()),
 
     url(r'^tag/(?P<tag>\w+)/$', category_detail),
