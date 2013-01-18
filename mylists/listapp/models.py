@@ -1,6 +1,9 @@
 from datetime import datetime
 
+from django.contrib.auth.models import User
 from django.db import models
+
+from mailfetcher.models import MailBox
 
 
 class Category(models.Model):
@@ -23,3 +26,11 @@ class Link(models.Model):
 
     def __unicode__(self):
         return unicode(self.title)
+
+
+class UserProfile(models.Model):
+    user = models.OneToOneField(User)
+    mailbox = models.OneToOneField(MailBox)
+
+    def __unicode__(self):
+        return unicode(self.user) + u' profile'
