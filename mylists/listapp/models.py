@@ -1,6 +1,9 @@
 from datetime import datetime
 
+from django.contrib.auth.models import User
 from django.db import models
+
+from mailfetcher.models import MailBox
 
 
 class Category(models.Model):
@@ -20,6 +23,15 @@ class Link(models.Model):
                                null=True)
     date_added = models.DateTimeField(default=datetime.now)
     category = models.ManyToManyField(Category, blank=True)
+    user = models.ForeignKey(User)
 
     def __unicode__(self):
         return unicode(self.title)
+
+
+class UserProfile(models.Model):
+    user = models.OneToOneField(User)
+    mailbox = models.OneToOneField(MailBox)
+
+    def __unicode__(self):
+        return unicode(self.user) + u' profile'

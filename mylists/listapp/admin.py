@@ -1,5 +1,6 @@
 from django.contrib import admin
-from listapp.models import Category, Link
+from listapp import models
 
-admin.site.register(Category)
-admin.site.register(Link)
+admin.site.register(models.Category)
+admin.site.register(models.Link)
+admin.site.register(models.UserProfile)
