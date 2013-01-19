@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block body %}
+<p>Logged in as {{ request.user }}</p>
 <ul>
     {% for link in object_list %}
     <li>{{ link.title }}</li>
