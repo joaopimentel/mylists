@@ -12,7 +12,8 @@ class LinkList(ListView):
 
     def get_queryset(self):
         """Order Links by date_added, desc."""
-        return self.model.objects.order_by('-date_added')
+        return self.model.objects.filter(user=self.request.user)\
+                                 .order_by('-date_added')
 
     @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):

@@ -23,6 +23,7 @@ class Link(models.Model):
                                null=True)
     date_added = models.DateTimeField(default=datetime.now)
     category = models.ManyToManyField(Category, blank=True)
+    user = models.ForeignKey(User)
 
     def __unicode__(self):
         return unicode(self.title)
