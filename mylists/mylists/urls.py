@@ -17,6 +17,8 @@ urlpatterns = patterns('',
         name="logout"),
 
     url(r'^$', LinkList.as_view()),
+    url(r'^links/$', LinkList.as_view(),
+        name="link_list"),
 
     url(r'^tag/(?P<tag>\w+)/$', category_detail),
 
