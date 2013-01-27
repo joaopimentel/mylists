@@ -4,7 +4,7 @@ from django.template import loader, RequestContext
 from django.utils.decorators import method_decorator
 from django.views.generic import ListView
 
-from listapp.models import Link
+from listapp.models import Link, Category
 
 
 class LinkList(ListView):
@@ -31,3 +31,11 @@ def category_detail(request, tag=None):
             'object_list': link_list,
     })
     return HttpResponse(t.render(c))
+
+
+class CategoryList(ListView):
+    model = Category
+
+    @method_decorator(login_required)
+    def dispatch(self, request, *args, **kwargs):
+        return super(ListView, self).dispatch(request, *args, **kwargs)

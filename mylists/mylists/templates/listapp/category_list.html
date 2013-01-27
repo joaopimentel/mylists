@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block nav %}
+<li {% if alllinks %}class="active"{% endif %}>
+  <a href="{% url link_list %}">Link List</a>
+</li>
+<li><a href="{% url link_list %}">Link List</a></li>
+{% endblock nav %}
+
+{% block content %}
+<div class="row-fluid">
+  {% for cat in object_list %}
+    <h4><a href="{% url category_detail cat.tag %}">{{ cat.name }}</a></h4>
+    {% if not forloop.last %}<hr>{% endif %}
+  {% endfor %}
+{% endblock %}
