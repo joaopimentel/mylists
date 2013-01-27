@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
 
 {% block nav %}
-<li><a href="{% url link_list %}">Link List</a></li>
+<li {% if alllinks %}class="active"{% endif %}>
+  <a href="{% url link_list %}">Link List</a>
+</li>
 {% endblock nav %}
 
 {% block content %}
