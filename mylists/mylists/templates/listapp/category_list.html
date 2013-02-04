@@ -2,9 +2,9 @@
 
 {% block nav %}
 <li {% if alllinks %}class="active"{% endif %}>
-  <a href="{% url link_list %}">Link List</a>
+  <a href="{% url link_list %}">Links</a>
 </li>
-<li><a href="{% url link_list %}">Link List</a></li>
+<li><a href="{% url category_list %}">Tags</a></li>
 {% endblock nav %}
 
 {% block content %}
