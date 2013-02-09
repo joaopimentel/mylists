@@ -10,20 +10,19 @@
 {% block content %}
 <div class="row-fluid">
   {% for link in object_list %}
-  <h4><a href="{{ link.url }}">{{ link.title }}</a></h4>
+  <a href="{{ link.url }}">{{ link.title }}</a>
   {% if link.comment %}
-    <p>{{ link.comment }}</p>
+    - {{ link.comment }}
   {% endif %}
-  <p>
+  -
     {% for cat in link.category.all %}
     <a href="/tag/{{ cat.tag }}/">
       <small>{{cat}}</small>
     </a>{% if not forloop.last %},{% endif %}
     {% empty %}
-    None
+    No tags
     {% endfor %}
-  </p>
-  <small>Added {{ link.date_added }}</small>
-  {% if not forloop.last %}<hr>{% endif %}
+    <br><small>Added {{ link.date_added }}</small>
+  {% if not forloop.last %}<hr style="margin-top:2px;margin-bottom:4px">{% endif %}
   {% endfor %}
 {% endblock %}
