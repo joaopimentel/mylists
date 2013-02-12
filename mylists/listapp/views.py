@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.db.models import Count
 from django.http import HttpResponse
 from django.template import loader, RequestContext
 from django.utils.decorators import method_decorator
@@ -36,6 +37,15 @@ def category_detail(request, tag=None):
 
 class CategoryList(ListView):
     model = Category
+
+    def get_queryset(self):
+        """Returns Categories for which the user has links, ordered by
+        corresponding number of links."""
+        return self.model.objects.select_related('link')\
+                                 .filter(link__user=self.request.user)\
+                                 .annotate(num_links=Count('link'))\
+                                 .order_by('-num_links')\
+                                 #.distinct()
 
     @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
