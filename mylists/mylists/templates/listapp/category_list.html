@@ -10,7 +10,8 @@
 {% block content %}
 <div class="row-fluid">
   {% for cat in object_list %}
-    <h4><a href="{% url category_detail cat.tag %}">{{ cat.name }}</a></h4>
-    {% if not forloop.last %}<hr>{% endif %}
+  <a href="{% url category_detail cat.tag %}">{{ cat.name }}</a>
+  <br><small>{{ cat.num_links }} link{{ cat.num_links|pluralize }}</small>
+  {% if not forloop.last %}<hr style="margin-top:2px;margin-bottom:4px">{% endif %}
   {% endfor %}
 {% endblock %}
