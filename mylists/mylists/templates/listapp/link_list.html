@@ -14,15 +14,15 @@
   {% if link.comment %}
     - {{ link.comment }}
   {% endif %}
-  -
-    {% for cat in link.category.all %}
-    <a href="/tag/{{ cat.tag }}/">
-      <small>{{cat}}</small>
-    </a>{% if not forloop.last %},{% endif %}
-    {% empty %}
-    No tags
-    {% endfor %}
-    <br><small>Added {{ link.date_added }}</small>
+  <br/>
+  {% for cat in link.category.all %}
+  <a href="/tag/{{ cat.tag }}/">
+    <small>{{cat}}</small>
+  </a>{% if not forloop.last %},{% endif %}
+  {% empty %}
+  No tags
+  {% endfor %}
+  - <small>Added {{ link.date_added }}</small>
   {% if not forloop.last %}<hr style="margin-top:2px;margin-bottom:4px">{% endif %}
   {% endfor %}
 {% endblock %}
