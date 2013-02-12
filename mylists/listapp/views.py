@@ -22,10 +22,11 @@ class LinkList(ListView):
 
 @login_required
 def category_detail(request, tag=None):
-    """Lists all Links tagged with given category.
+    """Lists all Links from logged user tagged with given category.
     """
     link_list = Link.objects.select_related('category')\
-                .filter(category__tag=tag)
+                .filter(category__tag=tag,
+                        user=request.user)
     t = loader.get_template('listapp/link_list.html')
     c = RequestContext(request, {
             'object_list': link_list,
